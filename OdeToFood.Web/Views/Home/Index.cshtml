@@ -1,0 +1,27 @@
+﻿@model IEnumerable<OdeToFood.Data.Models.Restaurant>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    @DateTime.Now.Year
+    
+    
+    <div>
+        @*without a specific type definition, we need to give the full reference to Enumerable*@
+        There are @Enumerable.Count(Model) restaurants in the database.
+
+        @*Alternatively, once the type definition is made at the start, we can just call methods on that type*@
+        Yes, there really are @Model.Count() restaurants stored here.
+    </div>
+           
+</div>
+
+@*<ul>
+    @foreach (var restaurant in Model)
+    {
+        <li>@restaurant.Name</li>
+    }
+
+</ul>*@
