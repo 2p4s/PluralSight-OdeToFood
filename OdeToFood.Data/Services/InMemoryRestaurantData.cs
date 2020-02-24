@@ -29,6 +29,20 @@ namespace OdeToFood.Data.Services
 
 
         }
+        public void Update(Restaurant restaurant)
+        {
+            //check we have a restaurant to edit
+            var existing = Get(restaurant.Id);
+            if(existing != null)
+            {
+                //we have something 
+                existing.Name = restaurant.Name;
+                existing.Cuisine = restaurant.Cuisine;
+            }
+
+            
+
+        }
 
         public Restaurant Get(int id)
         {
@@ -39,6 +53,16 @@ namespace OdeToFood.Data.Services
         public IEnumerable<Restaurant> GetAll()
         {
             return restaurants.OrderBy(r => r.Name);
+        }
+
+        public void Delete(int id)
+        {
+            var restaurant = Get(id);
+            //get the restaurant
+            if (restaurant != null)
+            {
+                restaurants.Remove(restaurant);
+            }
         }
     }
 }

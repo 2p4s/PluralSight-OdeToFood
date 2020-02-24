@@ -26,9 +26,13 @@ namespace OdeToFood.Web
 
             //tell container builder about specific types
             //asking for IRestaurantData will return InMemoryRestaurantData
-            builder.RegisterType<InMemoryRestaurantData>()
+            builder.RegisterType<SqlRestaurantData>()
                 .As<IRestaurantData>()
-                .SingleInstance();  //use a single instance, ie. shared instance as a singleton
+                //.SingleInstance();  //use a single instance, ie. shared instance as a singleton
+                .InstancePerRequest();  //use an instance for this httpRequest.
+
+            //register the type it requires to be injected into the constructor
+            builder.RegisterType<OdeToFoodDbContext>().InstancePerRequest();
 
             //build the container based on the configuration given above
             var container = builder.Build();
