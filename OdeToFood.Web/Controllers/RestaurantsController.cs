@@ -99,6 +99,10 @@ namespace OdeToFood.Web.Controllers
                 //save it now
                 db.Update(restaurant);
 
+                //using TempData operates similar to session data, but only exists for the next page lifecycle request
+                // - works using keyvalue pairs, it is accessible anywhere
+                TempData["Message"] = "You have saved the restaurant!";
+
                 //its all good in the hood, redirector
                 return RedirectToAction("Details", new { id = restaurant.Id });
             }
@@ -130,6 +134,7 @@ namespace OdeToFood.Web.Controllers
         {
             db.Delete(id);
             return RedirectToAction("Index");
+
         }
 
     }
