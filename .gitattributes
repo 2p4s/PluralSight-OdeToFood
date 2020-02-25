@@ -2,7 +2,7 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
-OdeToFood.Web/SCripts/* linguist-vendored
+OdeToFood.Web/Scripts/* linguist-vendored
 
 ###############################################################################
 # Set default behavior for command prompt diff.
